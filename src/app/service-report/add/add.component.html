@@ -1,0 +1,33 @@
+<div class="container">
+    <h1>add report</h1>
+    <form [formGroup]="reportForm" (ngSubmit)="addReport()">
+        <div *ngIf="!reportForm.valid" class="all">please fill in all the fields</div>
+        <div class="inputs">
+            <label>Technical ID</label>
+            <input type="text" formControlName="technicalId" name="technicalId">
+            <div *ngIf="!getTechnicalId().valid && getTechnicalId().touched" class="required">you need to write this field</div>
+        </div>
+
+        <div class="inputs">
+            <label>Service ID</label>
+            <input type="text" formControlName="serviceId" name="serviceId">
+            <div *ngIf="!getServiceId().valid && getServiceId().touched" class="required">you need to write this field</div>
+        </div>
+        <div class="inputs">
+            <label>Start date time</label>
+            <input type="datetime-local" name="meeting-time" value="2021-01-01T00:00" min="2021-01-01T00:00"
+                formControlName="startDateTime" name="startDatetime">
+            <div *ngIf="!getStartDateTime().valid && getStartDateTime().touched" class="required">you need to write this field</div>
+        </div>
+        <div class="inputs">
+            <label>End date time</label>
+            <input type="datetime-local" name="meeting-time" value="2021-01-01T00:00" min="2021-01-01T00:00"
+                formControlName="endDateTime" name="endDatetime">
+            <div *ngIf="!getEndDateTime().valid && getEndDateTime().touched" class="required">you need to write this field</div>
+        </div>        
+        <div class="inputs">
+            <button type="submit" [disabled]="!reportForm.valid">add</button>
+        </div>
+        
+    </form>
+</div>

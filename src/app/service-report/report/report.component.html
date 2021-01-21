@@ -1,0 +1,33 @@
+<div class="container">
+    <form [formGroup]="findHoursForm" (ngSubmit)="findHours()">
+        <div class="all" *ngIf="!findHoursForm.valid">please complete all the fields</div>
+        <label class="inp">Technical ID
+            <input type="text" formControlName="technicalId" placeholder="enter technical id">            
+        </label>
+        <label class="inp">
+            week number
+            <select formControlName="weekNumber">
+                <option selected="true" disabled="disabled">choose one</option>
+                <option *ngFor="let day of weekNumber" value="{{day}}">{{day}}</option>
+            </select>        
+        </label>
+        <button type="submit" [disabled]="!findHoursForm.valid"> find</button>
+    </form>
+    <div *ngIf="!getTechnicalId().valid && getTechnicalId().touched || !getWeek().valid && getWeek().touched" class="required">
+        all fields are required
+    </div>
+
+</div>
+<div class="tab" *ngIf="report">
+    <h2><span class="badge bg-secondary">NORMAL</span></h2>
+    <span class="info">Base Salary : $<p>{{report.baseSalary}}.000</p></span>
+    <span class="info">Normal Hours [{{report.normalWorkingHours}} h] : $<p>{{report.normalHours}}000</p></span>
+    <span class="info">Night Hours [{{report.workingNightHours}} h] : $<p>{{report.nightHours}}000</p></span>
+    <span class="info">Sunday Hours [{{report.sundayWorkingHours}} h] : $<p>{{report.sundayHours}}000</p></span>
+    <h2><span class="badge bg-secondary">EXTRA</span></h2>
+    <span class="info">Extra Normal Hours [{{report.normalOvertimeWorked}} h] : $<p>{{report.normalExtraHours}}000</p></span>
+    <span class="info">Extra Night Hours [{{report.overnigthHoursWorked}} h] : $<p>{{report.nightlyOvertime}}000</p></span>
+    <span class="info">Extra Sunday Hours [{{report.sundayOvertimeWork}} h] : $<p>{{report.sundayExtraHours}}000</p></span>
+    <h2><span class="badge bg-secondary">TOTAL</span></h2>
+    <span class="info">Final Salary: $<p>{{report.finalSalary}}000</p></span>
+</div>

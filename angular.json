@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "handyMan"
+  "defaultProject": "handyMan",
+  "cli": {
+    "analytics": false
+  }
 }
